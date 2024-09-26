@@ -10,19 +10,18 @@ public class Biblioteca {
     public void adicionar(Livro livro) throws Exception{
         if (livro.getTitulo() == null || livro.getTitulo().isEmpty()) {
             throw new Exception("Não é permitido cadastrar livro sem titulo");
-        }for (Livro livroAcervo : acervo) {
+        }
+        else if(livro.getAutor() == null || livro.getAutor().isEmpty()) {
+            throw new Exception("Não e possível cadastar um livro sem autor!");
+        }
+        else if(livro.getAnoPublicacao() < 1400 || livro.getAnoPublicacao() > LocalDate.now().getYear()){
+            throw new Exception("Coloque um ano de publição valido! (Maior que 1400 e menor que o ano atual)");
+        }
+        for (Livro livroAcervo : acervo) {
             if (livroAcervo.getTitulo().equalsIgnoreCase(livro.getTitulo())) {
                 throw new Exception("Já existe livro cadastrado com este título");
             }
         }
-        if(livro.getAutor() == null || livro.getAutor().isEmpty()) {
-            throw new Exception("Não e possível cadastar um livro sem autor!");
-        }
-        if(livro.getAnoPublicacao() < 1400 || livro.getAnoPublicacao() > LocalDate.now().getYear()){
-            throw new Exception("Coloque um ano de publção valido!(Maior que 1400 e menor que o ano atual!)");
-
-        }
-        
         acervo.add(livro);
     }
 
@@ -36,12 +35,17 @@ public class Biblioteca {
         return livrosEncontrados;
     }
     
-    public void removerPorTitulo(String titulo) {
+    public void removerPorTitulo(String titulo) throws Exception {
+        boolean i = false;
         for (Livro livro : acervo) {
             if(livro.getTitulo().equalsIgnoreCase(titulo)){
                 acervo.remove(livro);
+                i = true;
                 break;
             }
+        }
+        if (!i){
+            throw new Exception("Livro não encontrado!");
         }
     }
 

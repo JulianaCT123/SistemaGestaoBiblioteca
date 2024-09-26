@@ -60,6 +60,7 @@ public class Main {
         livros.sort(Comparator.comparing(Livro::getTitulo));
         System.out.println("====== LISTA DE LIVROS ======");
         for (Livro livro : livros) {
+            System.out.println("-----------------");
             System.out.println("Titulo: " + livro.getTitulo());
             System.out.println("Autor: " + livro.getAutor());
             System.out.println("Ano :" + livro.getAnoPublicacao());
@@ -67,7 +68,7 @@ public class Main {
         }
     }
 
-    private static void pesquisar() {
+    private static void pesquisarPorTitulo() {
         System.out.println("====== PESQUISAR LIVROS ======");
         System.out.print("Insira o titulo do livro: ");
         String titulo = input.nextLine();
@@ -78,6 +79,18 @@ public class Main {
             System.out.println("Autor: " + livro.getAutor());
             System.out.println("Ano :" + livro.getAnoPublicacao());
             System.out.println("N. Páginas: " + livro.getnPaginas());
+        }
+    }
+
+    private static void removerPorTitulo() {
+        System.out.println("====== EXCLUIR LIVRO ======");
+        System.out.print("Insira o titulo do livro: ");
+        String titulo = input.nextLine();
+        try {
+            biblio.removerPorTitulo(titulo);
+            System.out.println("Livro removido com sucesso!");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
     public static void main(String[] args) {
@@ -115,10 +128,10 @@ public class Main {
                     limpar();
                     break;
                 case 3:
-                    pesquisar();
+                    pesquisarPorTitulo();
                     break;
                 case 4:
-                    // Remover
+                    removerPorTitulo();
                     break;
                 default:
                     System.out.println("Opção Invalida");
