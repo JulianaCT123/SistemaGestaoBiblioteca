@@ -17,6 +17,9 @@ public class Biblioteca {
         else if(livro.getAnoPublicacao() < 1400 || livro.getAnoPublicacao() > LocalDate.now().getYear()){
             throw new Exception("Coloque um ano de publição valido! (Maior que 1400 e menor que o ano atual)");
         }
+        else if(livro.getnPaginas() <= 0){
+            throw new Exception("Coloque um número de páginas válido! (O número não pode ser negativo ou 0)");
+        }
         for (Livro livroAcervo : acervo) {
             if (livroAcervo.getTitulo().equalsIgnoreCase(livro.getTitulo())) {
                 throw new Exception("Já existe livro cadastrado com este título");
