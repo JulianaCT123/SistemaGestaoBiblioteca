@@ -62,6 +62,19 @@ public class Main {
         }
     }
 
+    private static void pesquisar() {
+        System.out.println("====== PESQUISAR LIVROS ======");
+        System.out.print("Insira o titulo do livro: ");
+        String titulo = input.nextLine();
+        var livros = biblio.pesquisarPorTitulo(titulo);
+        for (Livro livro : livros) {
+            System.out.println("-----------------");
+            System.out.println("Titulo: " + livro.getTitulo());
+            System.out.println("Autor: " + livro.getAutor());
+            System.out.println("Ano :" + livro.getAnoPublicacao());
+            System.out.println("N. Páginas: " + livro.getnPaginas());
+        }
+    }
     public static void main(String[] args) {
         String menu = """
 
@@ -92,7 +105,7 @@ public class Main {
                     listar();
                     break;
                 case 3:
-                    // Pesquisar
+                    pesquisar();
                     break;
                 case 4:
                     // Remover
