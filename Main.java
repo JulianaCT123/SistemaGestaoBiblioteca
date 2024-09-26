@@ -5,6 +5,11 @@ public class Main {
     static Biblioteca biblio = new Biblioteca();
     static Scanner input = new Scanner(System.in);
 
+    public static void limpar() {                                       // void limpar
+        System.out.println("\033[H\033[2J");
+        System.out.flush();
+    }
+
     private static int inputNumerico(String mensagem){
         int valor = 0;
         boolean entradaValida = false;
@@ -77,7 +82,7 @@ public class Main {
     }
     public static void main(String[] args) {
         String menu = """
-
+                
                     SISTEMA DE GERENCIAMENTO DE BIBLIOTECA
 
                 Escolha uma das opções:
@@ -99,10 +104,15 @@ public class Main {
                     System.out.println("Volte sempre!");
                     break;
                 case 1:
+                    limpar();   
                     adicionar();
+                    limpar();   
                     break;
                 case 2:
+                    limpar();   
                     listar();
+                    input.nextLine();
+                    limpar();
                     break;
                 case 3:
                     pesquisar();

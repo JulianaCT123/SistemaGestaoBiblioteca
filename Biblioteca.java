@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,14 @@ public class Biblioteca {
                 throw new Exception("Já existe livro cadastrado com este título");
             }
         }
+        if(livro.getAutor() == null || livro.getAutor().isEmpty()) {
+            throw new Exception("Não e possível cadastar um livro sem autor!");
+        }
+        if(livro.getAnoPublicacao() < 1400 || livro.getAnoPublicacao() > LocalDate.now().getYear()){
+            throw new Exception("Coloque um ano de publção valido!(Maior que 1400 e menor que o ano atual!)");
+
+        }
+        
         acervo.add(livro);
     }
 
