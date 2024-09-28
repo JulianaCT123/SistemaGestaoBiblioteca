@@ -94,6 +94,7 @@ public class Main {
         }
     }
     public static void main(String[] args) {
+        limpar();
         String menu = """
                 
                     SISTEMA DE GERENCIAMENTO DE BIBLIOTECA
@@ -128,10 +129,16 @@ public class Main {
                     limpar();
                     break;
                 case 3:
+                    limpar();
                     pesquisarPorTitulo();
+                    input.nextLine();
+                    limpar();
                     break;
                 case 4:
+                    limpar();
                     removerPorTitulo();
+                    input.nextLine();
+                    limpar();
                     break;
                 default:
                     System.out.println("Opção Invalida");
